@@ -16,4 +16,5 @@ public interface UserService {
     public List<UserModel> getAllUsers();
 
     public UserModel getUserByUserName(String userName);
+    
 }

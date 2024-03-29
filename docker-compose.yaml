@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  spring-boot-app:
+    build: .  # Build from the current directory Dockerfile
+    ports:
+      - "8080"  # Map container port 8080 to host port 8080
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123123
+      - MYSQL_DATABASE=projectaspringboot
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: "123123"
+      MYSQL_DATABASE: projectaspringboot  # Specify the database name here
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data: {}
